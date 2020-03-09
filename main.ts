@@ -20,9 +20,9 @@ namespace SU01 {
         return pins.i2cReadNumber(SU01_I2C_ADDR, NumberFormat.UInt8BE);
     }
 
-    function getUInt16LE(reg: number): number {
+    function getUInt16BE(reg: number): number {
         pins.i2cWriteNumber(SU01_I2C_ADDR, reg, NumberFormat.UInt8BE);
-        return pins.i2cReadNumber(SU01_I2C_ADDR, NumberFormat.UInt16LE);
+        return pins.i2cReadNumber(SU01_I2C_ADDR, NumberFormat.UInt16BE);
     }
 
 
@@ -35,7 +35,7 @@ namespace SU01 {
         let data: NumberFormat.UInt16LE
         let voltage: number
 
-        data = getUInt16LE(ADC_REG_RESULT);
+        data = getUInt16BE(ADC_REG_RESULT);
 
         a = ((data & 0xFF00) >> 8);
         b = ((data & 0x00FF) >> 0);
